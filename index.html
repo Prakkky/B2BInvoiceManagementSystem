@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="LP.css">
+    <title>High Radius</title>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+     <style>
+      .mySlides {display:none;}
+      
+      body{
+      background-color:#283A46;
+      }
+
+      </style>
+  </head>
+    <body>
+
+      <nav>
+         <img class="img1" src="abc.png" alt="bloc1" >
+         <img class="img2" src="logo.png" alt="bloc2">
+     </nav>
+      <p class="sub-heading">Invoice List</p>
+      
+          <!---grid-->
+          <div class="container-fluid">
+          <div class="table-container">
+            <div class="crud-buttons">
+               <button class="cbtn" id="myBtn" ><!--Add icons here-->+ Add</button>
+               <button class="cbtn" id="myBtn1">&#9998; Edit</button>
+               <button class="cbtn" id="myBtn2">- Delete</button> 
+               <div class="search-bar">
+                 <input type="text" class="form-input" id="search" onkeyup="searchFun()" placeholder="Search by invoice number">
+                 <span class="form-control-feedback">&#128269;</span>
+               </div>
+              
+
+               <!--Add Modal-->
+               <div id="myModal" class="modal">
+                  <!-- Modal content -->
+                  <div class="modal-content1 add-modal">
+                     <div class="modal-header">
+                        <div style="margin: 8px 0px 8px 20px;">
+                        <h4>Add Invoice</h4>
+                        </div> 
+                        <div style="margin: 20px 25px 18px 0px;">
+                        <span class="close"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24.033 24.033"><defs><style>.a{fill:#c0c6ca;}.b{fill:none;}</style></defs><g transform="translate(0.001)"><path class="a" d="M24.635,6.977,22.657,5l-7.84,7.84L6.977,5,5,6.977l7.84,7.84L5,22.657l1.977,1.977,7.84-7.84,7.84,7.84,1.977-1.977-7.84-7.84Z" transform="translate(-2.811 -2.81)"/><path class="b" d="M0,0H24.033V24.033H0Z" transform="translate(-0.001)"/></g></svg></span>
+                        </div>
+                     </div>
+                     <div class="modal-body">
+                           <div class="left-side">
+                              <div class="grid-input">
+                                 <label>Customer Name<span style="color: red;">*</span></label>
+                                 <input type="text" style="margin-left: 25px;" class="modal-input">
+                              </div>
+                              <div class="grid-input">
+                                 <label>Customer No.<span style="color: red;">*</span></label>
+                                 <input type="text" style="margin-left: 25px;" class="modal-input">
+                              </div>
+                              <div class="grid-input">
+                                 <label>Invoice No.<span style="color: red;">*</span></label>
+                                 <input type="text" style="margin-left: 25px;" class="modal-input">
+                              </div>
+                              <div class="grid-input">
+                                 <label>Invoice Amount.<span style="color: red;">*</span></label>
+                                 <input type="text" style="margin-left: 25px;" class="modal-input">
+                              </div>
+                           </div> 
+                           <div class="right-side">
+                              <div class="grid-input">
+                                 <label>Due Date<span style="color: red;">*</span></label>
+                                 <input type="date" class="modal-input datei" style="color: whitesmoke;" placeholder="">
+                              </div>
+                              <div class="grid-input">
+                                 <label>Notes</label>
+                                 <textarea rows="8" cols="5" class="modal-input"></textarea>
+                              </div>
+                           </div>
+                     </div>
+
+                     <div class="modal-footer">
+                        <div style="flex: 1;">
+                           <button style="background: transparent; outline: 0; border: 0; color: #14AFF1;">cancel</button>
+                        </div>
+                        <div style="flex: 1; text-align: right;">
+                           <button class="fb1">clear</button>
+                           <button class="fb2" onclick="add()">Add</button>
+                        </div>
+                     </div>
+                  </div>
+                </div>
+
+                <!--Edit Modal-->
+                <div id="myModal1" class="modal">
+                  <!-- Modal content -->
+                  <div class="modal-content2 edit-modal">
+                     <div class="modal-header">
+                        <div style="margin: 8px 0px 8px 20px;">
+                        <h4>Edit Invoice</h4>
+                        </div> 
+                        <div style="margin: 20px 25px 18px 0px;">
+                        <span class="close1"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24.033 24.033"><defs><style>.a{fill:#c0c6ca;}.b{fill:none;}</style></defs><g transform="translate(0.001)"><path class="a" d="M24.635,6.977,22.657,5l-7.84,7.84L6.977,5,5,6.977l7.84,7.84L5,22.657l1.977,1.977,7.84-7.84,7.84,7.84,1.977-1.977-7.84-7.84Z" transform="translate(-2.811 -2.81)"/><path class="b" d="M0,0H24.033V24.033H0Z" transform="translate(-0.001)"/></g></svg></span>
+                        </div>
+                     </div>
+                     <div class="modal-body">
+                        <div class="left-side">
+                              <div class="grid-input">
+                                 <label>Invoice Amount.</label>
+                                 <input type="text" style="margin-left: 25px;" class="modal-input">
+                              </div>
+                              <div class="grid-input">
+                                 <label>Notes</label>
+                                 <textarea rows="8" cols="5" class="modal-input"></textarea>
+                              </div>
+                           </div>
+                     </div>
+                     <div class="modal-footer">
+                        <div style="flex: 1;">
+                           <button style="background: transparent; outline: 0; border: 0; color: #14AFF1;">cancel</button>
+                        </div>
+                        <div style="flex: 1; text-align: right;">
+                           <button class="fb1">Rest</button>
+                           <button class="fb2">Save</button>
+                        </div>
+                     </div>
+                  </div>
+                </div>
+
+
+                <!--Delete Modal-->
+
+                <div id="myModal2" class="modal">
+                  <!-- Modal content -->
+                  <div class="modal-content3 delete-modal">
+                     <div class="modal-header">
+                        <div style="margin: 8px 0px 8px 20px;">
+                        <h4>Delete record(s)?</h4>
+                        </div> 
+                        <div style="margin: 20px 25px 18px 0px;">
+                        <span class="close2"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24.033 24.033"><defs><style>.a{fill:#c0c6ca;}.b{fill:none;}</style></defs><g transform="translate(0.001)"><path class="a" d="M24.635,6.977,22.657,5l-7.84,7.84L6.977,5,5,6.977l7.84,7.84L5,22.657l1.977,1.977,7.84-7.84,7.84,7.84,1.977-1.977-7.84-7.84Z" transform="translate(-2.811 -2.81)"/><path class="b" d="M0,0H24.033V24.033H0Z" transform="translate(-0.001)"/></g></svg></span>
+                        </div>
+                     </div>
+                     <div class="modal-body1">
+                        
+                           <p style="text-align:left;">You'll lose your record(s) after this action. We can't recover them once you delete.<br>
+                            Are you sure you want to <span style="color: red;">permanently  delete</span> them?</p>
+                           
+                     </div>
+                     <div class="modal-footer">
+                        <div style="flex: 1; text-align: right;">
+                           <button class="fb1">Cancle</button>
+                           <button class="fb2">Save</button>
+                        </div>
+                     </div>
+                  </div>
+                </div>
+
+
+             </div>
+
+           </table>
+           
+        </div> 
+
+        <div class="mySlides"  >
+         <!-- On rows of 1st table -->
+         <table onload="showonLoad()" class="table" id="datatable" style="color: white;" >
+          <thead style="border-bottom: 1px solid rgb(37, 37, 37,0.6);">
+            <tr>
+              <th><input type="checkbox" onclick="checkingall(this)"></th>
+              <th scope="col" id="cust_name">Customer Name</th>
+              <th scope="col" id="cust_id">Customer ID</th>
+              <th scope="col" id="invoice_id">Invoice ID</th>
+              <th scope="col" id="invoice_amt" style="width: 10%;">Invoice Amount</th>
+              <th scope="col" id="due_date" class="td-right" style="width: 13%;"><span style="margin-right: 18px;">Due Date</span></th>
+              <th scope="col" id="predict_date" style="width: 18%;"><span style="margin-left: 20px;">Predicted Payment Date</span></th>
+              
+            </tr>
+            <tbody id="text"></tbody>
+          </thead>
+        </table>
+     </div>      
+  </div> 
+  
+  
+    </div>     
+
+        <button class="w3-button w3-black w3-display-left ar-btn ar-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-black w3-display-right ar-btn ar-right" onclick="plusDivs(1)">&#10095;</button>
+
+          </div>
+          </div>
+
+
+
+
+
+
+
+
+ <script src="index1.js" type="text/javascript"></script>
+ <script src="index2.js" type="text/javascript"></script>
+ <script src="index3.js" type="text/javascript"></script>
+ 
+
+ <script>
+   var slideIndex = 1;
+   showDivs(slideIndex);
+ 
+   
+   
+   function plusDivs(n) {
+     
+     showDivs(slideIndex += n);
+   }
+   
+   function showDivs(n) {
+     var i;
+     var x = document.getElementsByClassName("mySlides");
+     if (n > x.length) {slideIndex = 1}
+     if (n < 1) {slideIndex = x.length}
+     for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+     }
+     x[slideIndex-1].style.display = "block";  
+   }
+   </script>
+ 
+   <script type="text/javascript">
+     
+      function checking(that){
+           let n_id=that.id
+           console.log(n_id)
+           let a_id="row"+n_id;
+           console.log(a_id)
+           let check_known= document.getElementById(that.id).checked;
+           let curr_element= document.getElementById(a_id);
+   
+           console.log(curr_element)
+        
+          
+           if(check_known){
+                curr_element.style.background="rgb(162, 219, 250, 0.4)";
+           }else{
+               if(n_id%2==0){
+                 console.log("even")
+                 curr_element.style.background="#29292b";
+               }else{
+                 console.log("odd")
+                 curr_element.style.background="initial";
+               }
+           }
+         
+      }
+   </script>
+ </body>
+  </html>
